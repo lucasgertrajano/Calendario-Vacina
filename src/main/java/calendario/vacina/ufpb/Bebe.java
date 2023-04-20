@@ -3,7 +3,7 @@ package calendario.vacina.ufpb;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class Bebe {
+public class Bebe{
 
     private String nome;
     private String sexo;
@@ -18,9 +18,7 @@ public class Bebe {
         this.dataNascimento = dataNascimento;
         this.vacinasRecomendadas = new ArrayList<Vacina>();
         this.vacinasTomadas = new ArrayList<Vacina>();
-
     }
-
 
     public String getNome() {
         return nome;
