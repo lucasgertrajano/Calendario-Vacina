@@ -14,23 +14,6 @@ public class Main {
 
         System.out.println("Sistema Calendário de Vacina\n");
 
-        System.out.println("                                         Meses | Vacinas Recomendadas\n"
-                + "--------------------------------------------------------------------------------------------------------------------"
-                + "\n 0 meses  | BCG, Hepatite B                                                                                        | "
-                + "\n 2 meses  | Hepatite B, Poliomielite, Tríplice bacteriana, Pneumocócica 13V, Rotavírus                             | "
-                + "\n 3 meses  | Meningocócica ACWY, Meningocócica B                                                                    | "
-                + "\n 4 meses  | Poliomielite, Tríplice bacteriana, Pneumocócica 13V, Rotavírus                                         | "
-                + "\n 5 meses  | Meningocócica ACWY, Meningocócica B                                                                    | "
-                + "\n 6 meses  | Hepatite B, Poliomielite, Tríplice bacteriana, Pneumocócica 13V, Rotavírus, Influenza                  | "
-                + "\n 7 meses  | Meningocócica ACWY, Influenza                                                                          | "
-                + "\n 8 meses  | Influenza                                                                                              | "
-                + "\n 9 meses  | Febre Amarela, Influenza                                                                               | "
-                + "\n 10 meses | Influenza                                                                                              | "
-                + "\n 11 meses | Influenza                                                                                              | "
-                + "\n 12 meses | Pneumocócica 13V, Meningocócica ACWY, Meningocócica B, Tríplice viral, Varicela, Hepatite A, Influenza |"
-                + "\n--------------------------------------------------------------------------------------------------------------------"
-        );
-
         System.out.println("\n"
                 + "Escolha uma opção:"
                 + "\n 1.Cadastrar bebê"
@@ -41,6 +24,7 @@ public class Main {
                 + "\n 6.Verifcar Vacinas Disponíveis"
                 + "\n 7.Agendar Vacina"
                 + "\n 8.Consultar Vacinas Tomadas"
+                + "\n 9.Verificar Vacinas de acordo com os meses"
                 + "\n 0.Sair");
 
     Scanner leia = new Scanner(System.in);
@@ -92,6 +76,10 @@ public class Main {
                 System.out.println("Digite quatos meses tem seu bebê:");
                 int idadeVacinaBebe = Integer.parseInt(leia.nextLine());
                 System.out.println(vacinaService.getVacinasPorIdade(idadeVacinaBebe));
+                break;
+            case 9:
+                System.out.println(vacinaService.verficarVacinas());
+                break;
             case 0:
                 sair = true;
         }
