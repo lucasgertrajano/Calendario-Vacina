@@ -22,6 +22,11 @@ public class Bebe{
         this.calendario = new Calendario();
     }
 
+    @Override
+    public String toString(){
+        return "Nome: " + this.nome + "\nSexo: " + this.sexo + "\nIdade: " + this.idade + "\n";
+    }
+
 
     public String getNome() {
         return nome;

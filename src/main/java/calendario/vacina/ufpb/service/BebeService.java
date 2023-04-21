@@ -44,4 +44,12 @@ public class BebeService {
         }
         return false;
     }
+
+    public String listarBebes(){
+        String string = "";
+        for (Bebe bebe: this.bebes){
+            string = string.concat(bebe.toString());
+        }
+        return string;
+    }
 }
