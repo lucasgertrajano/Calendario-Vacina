@@ -59,7 +59,7 @@ public class Main {
                 break;
             case 2:
                 System.out.println("Bebês cadastrados: \n");
-                bebeService.listarBebes();
+                System.out.println(bebeService.listarBebes());
                 break;
             case 3:
                 System.out.println("Digite o nome do bebê que deseja remover:");
