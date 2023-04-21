@@ -9,9 +9,9 @@ public class Bebe{
     private String nome;
     private String sexo;
     private int idade;
-    private ArrayList<Vacina> vacinasRecomendadas;
-    private ArrayList<Vacina> vacinasTomadas;
-    private ArrayList<Bebe> bebes;
+
+    private Calendario calendario;
+
 
 
 
@@ -19,8 +19,7 @@ public class Bebe{
         this.nome = nome;
         this.sexo = sexo;
         this.idade = idade;
-        this.vacinasRecomendadas = new ArrayList<Vacina>();
-        this.vacinasTomadas = new ArrayList<Vacina>();
+        this.calendario = new Calendario();
     }
 
 
@@ -48,20 +47,8 @@ public class Bebe{
         this.idade = idade;
     }
 
-    public ArrayList<Vacina> getVacinasRecomendadas() {
-        return vacinasRecomendadas;
-    }
-
-    public void setVacinasRecomendadas(ArrayList<Vacina> vacinasRecomendadas) {
-        this.vacinasRecomendadas = vacinasRecomendadas;
-    }
-
-    public ArrayList<Vacina> getVacinasTomadas() {
-        return vacinasTomadas;
-    }
-
-    public void setVacinasTomadas(ArrayList<Vacina> vacinasTomadas) {
-        this.vacinasTomadas = vacinasTomadas;
+    public Calendario getCalendario() {
+        return calendario;
     }
 
     @Override

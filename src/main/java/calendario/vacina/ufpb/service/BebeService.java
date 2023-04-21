@@ -6,10 +6,8 @@ import calendario.vacina.ufpb.Vacina;
 import java.util.ArrayList;
 
 public class BebeService {
-    private ArrayList<Vacina> vacinasRecomendadas;
-    private ArrayList<Vacina> vacinasTomadas;
     private ArrayList<Bebe> bebes;
-    private Bebe bebe;
+
 
     public boolean cadastrarBebe(Bebe bebe){
         for(Bebe b : this.bebes) {
