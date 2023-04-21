@@ -1,8 +1,6 @@
 package calendario.vacina.ufpb.service;
 
 import calendario.vacina.ufpb.Bebe;
-import calendario.vacina.ufpb.Vacina;
-
 import java.util.ArrayList;
 
 public class BebeService {
@@ -41,11 +39,11 @@ public class BebeService {
         return false;
     }
 
-    public String listarBebes(){
-        String string = "";
+    public StringBuilder listarBebes(){
+        StringBuilder stringBuilder = new StringBuilder();
         for (Bebe bebe: this.bebes){
-            string = string.concat(bebe.toString());
+            stringBuilder.append(bebe.toString());
         }
-        return string;
+        return stringBuilder;
     }
 }
