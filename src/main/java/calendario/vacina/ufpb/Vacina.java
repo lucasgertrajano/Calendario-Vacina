@@ -10,6 +10,7 @@ public class Vacina {
         vacinas.add("Hepatite B");              //0, 2 e 6 meses
         vacinas.add("Poliomielite");            //2, 4 e 6 meses
         vacinas.add("Tríplice bacteriana");     //2, 4 e 6 meses
+        vacinas.add("Haemophilus");             //2, 4 e 6 meses
         vacinas.add("Pneumocócica 13V");        //2, 4, 6 e 12 meses
         vacinas.add("Rotavírus");               //2, 4 e 6 meses
         vacinas.add("Meningocócica ACWY");      //3, 5 e 12 meses
@@ -24,4 +25,5 @@ public class Vacina {
     public static ArrayList<String> getVacinas() {
         return vacinas;
     }
+
 }
