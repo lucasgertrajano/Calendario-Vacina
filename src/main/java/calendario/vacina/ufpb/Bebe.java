@@ -2,6 +2,7 @@ package calendario.vacina.ufpb;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Bebe{
 
@@ -63,4 +64,16 @@ public class Bebe{
         this.vacinasTomadas = vacinasTomadas;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Bebe bebe = (Bebe) o;
+        return idade == bebe.idade && nome.equals(bebe.nome);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(nome, idade);
+    }
 }
