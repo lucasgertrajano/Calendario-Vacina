@@ -1,8 +1,16 @@
 package calendario.vacina.ufpb;
 
+import calendario.vacina.ufpb.service.BebeService;
+
+import java.util.Scanner;
+
 public class Main {
 
     public static void main(String[] args) {
+
+        BebeService bebeService = new BebeService();
+
+        System.out.println("Sistema Calendário de Vacina\n");
 
         System.out.println("                                         Meses | Vacinas Recomendadas\n"
                 + "--------------------------------------------------------------------------------------------------------------------"
@@ -20,6 +28,56 @@ public class Main {
                 + "\n 12 meses | Pneumocócica 13V, Meningocócica ACWY, Meningocócica B, Tríplice viral, Varicela, Hepatite A, Influenza |"
                 + "\n--------------------------------------------------------------------------------------------------------------------"
         );
-    }
 
+        System.out.println("\n"
+                + "Escolha uma opção:"
+                + "\n 1.Cadastrar bebê"
+                + "\n 2.Listar bebês"
+                + "\n 3.Remover bebê"
+                + "\n 4.Pesquisar bebê"
+                + "\n 5.Alterar dados do bebê"
+                + "\n 6.Agendar Vacina"
+                + "\n 7.Consultar Vacinas Tomadas"
+                + "\n 0.Sair");
+
+    Scanner leia = new Scanner(System.in);
+    boolean sair = false;
+		while(!sair) {
+        int opcao = Integer.parseInt(leia.nextLine());
+
+        switch(opcao){
+            case 1:
+                System.out.println("Digite o nome do bebê:");
+                String nomeBebe = leia.nextLine();
+                System.out.println("Digite o sexo do bebê:");
+                String sexoBebe = leia.nextLine();
+                System.out.println("Digite a idade do bebê:");
+                int idadeBebe = Integer.parseInt(leia.nextLine());
+                Bebe bebe = new Bebe(nomeBebe, sexoBebe, idadeBebe);
+                bebeService.cadastrarBebe(bebe);
+                System.out.println("Cadastro concluído com sucesso! \n");
+                break;
+            case 2:
+                System.out.println("Bebês cadastrados: \n");
+                bebeService.listarBebes();
+                break;
+            case 3:
+                System.out.println("Digite o nome do bebê que deseja remover:");
+                String nome = leia.nextLine();
+                bebeService.removerBebe(nome);
+                System.out.println("Removido com sucesso! \n" );
+                break;
+            case 4:
+                System.out.println("Digite o nome do bebê que deseja pesquisar:");
+                String nomePesquisa = leia.nextLine();
+                bebeService.pesquisarPeloNome(nomePesquisa);
+                break;
+
+            case 0:
+                sair = true;
+        }
+    }
+		System.out.println("Fim de programa!");
+
+    }
 }

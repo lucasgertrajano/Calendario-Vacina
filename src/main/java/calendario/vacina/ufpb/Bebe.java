@@ -12,10 +12,6 @@ public class Bebe{
 
     private Calendario calendario;
 
-
-
-
-
     public Bebe(String nome, String sexo, int idade) {
         this.nome = nome;
         this.sexo = sexo;

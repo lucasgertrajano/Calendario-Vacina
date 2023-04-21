@@ -6,26 +6,22 @@ import calendario.vacina.ufpb.Vacina;
 import java.util.ArrayList;
 
 public class BebeService {
-    private ArrayList<Bebe> bebes;
+    private Bebe bebe;
+    private ArrayList<Bebe> bebes = new ArrayList<Bebe>();
 
-
-    public boolean cadastrarBebe(Bebe bebe){
-        for(Bebe b : this.bebes) {
-            if(b.equals(bebe)) {
-                return false;
-            }
-        }
-        this.bebes.add(bebe);
-        return true;
+    public BebeService() {
     }
-    public boolean removerBebe(Bebe bebe){
-        for(Bebe b : this.bebes) {
-            if(b.equals(bebe)) {
-                return false;
+
+    public Bebe cadastrarBebe(Bebe bebe){
+        this.bebes.add(bebe);
+        return bebe;
+    }
+    public void removerBebe(String nome){
+        for(Bebe b: this.bebes) {
+            if(b.getNome().equals(nome)) {
+                this.bebes.remove(nome);
             }
         }
-        this.bebes.remove(bebe);
-        return true;
     }
     public Bebe pesquisarPeloNome(String nome) {
         for( Bebe b: this.bebes) {
