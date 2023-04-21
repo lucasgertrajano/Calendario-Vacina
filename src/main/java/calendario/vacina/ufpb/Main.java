@@ -1,6 +1,7 @@
 package calendario.vacina.ufpb;
 
 import calendario.vacina.ufpb.service.BebeService;
+import calendario.vacina.ufpb.service.VacinaService;
 
 import java.util.Scanner;
 
@@ -9,6 +10,7 @@ public class Main {
     public static void main(String[] args) {
 
         BebeService bebeService = new BebeService();
+        VacinaService vacinaService = new VacinaService();
 
         System.out.println("Sistema Calendário de Vacina\n");
 
@@ -36,8 +38,9 @@ public class Main {
                 + "\n 3.Remover bebê"
                 + "\n 4.Pesquisar bebê"
                 + "\n 5.Alterar dados do bebê"
-                + "\n 6.Agendar Vacina"
-                + "\n 7.Consultar Vacinas Tomadas"
+                + "\n 6.Verifcar Vacinas Disponíveis"
+                + "\n 7.Agendar Vacina"
+                + "\n 8.Consultar Vacinas Tomadas"
                 + "\n 0.Sair");
 
     Scanner leia = new Scanner(System.in);
@@ -85,6 +88,10 @@ public class Main {
                 bebeService.alterarBebe(nomeAlterar, new Bebe(novoNome,novoSexo,novaIdade));
                 System.out.println("Dados alterados com sucesso!");
                 break;
+            case 6:
+                System.out.println("Digite quatos meses tem seu bebê:");
+                int idadeVacinaBebe = Integer.parseInt(leia.nextLine());
+                System.out.println(vacinaService.getVacinasPorIdade(idadeVacinaBebe));
             case 0:
                 sair = true;
         }
