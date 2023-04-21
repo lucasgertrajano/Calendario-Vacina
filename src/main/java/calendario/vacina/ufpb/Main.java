@@ -51,7 +51,7 @@ public class Main {
                 String nomeBebe = leia.nextLine();
                 System.out.println("Digite o sexo do bebê:");
                 String sexoBebe = leia.nextLine();
-                System.out.println("Digite a idade do bebê:");
+                System.out.println("Quantos meses o bebê tem?");
                 int idadeBebe = Integer.parseInt(leia.nextLine());
                 Bebe bebe = new Bebe(nomeBebe, sexoBebe, idadeBebe);
                 bebeService.cadastrarBebe(bebe);
@@ -70,9 +70,21 @@ public class Main {
             case 4:
                 System.out.println("Digite o nome do bebê que deseja pesquisar:");
                 String nomePesquisa = leia.nextLine();
-                bebeService.pesquisarPeloNome(nomePesquisa);
+                System.out.println(bebeService.pesquisarPeloNome(nomePesquisa));
                 break;
-
+            case 5:
+                System.out.println("Digite o nome do bebê que deseja alterar:");
+                String nomeAlterar = leia.nextLine();
+                System.out.println("Digite os novos dados do bebê");
+                System.out.println("Digite o nome bebê:");
+                String novoNome = leia.nextLine();
+                System.out.println("Digite o sexo do bebê:");
+                String novoSexo = leia.nextLine();
+                System.out.println("Digite quantos meses o bebê tem:");
+                int novaIdade = Integer.parseInt(leia.nextLine());
+                bebeService.alterarBebe(nomeAlterar, new Bebe(novoNome,novoSexo,novaIdade));
+                System.out.println("Dados alterados com sucesso!");
+                break;
             case 0:
                 sair = true;
         }

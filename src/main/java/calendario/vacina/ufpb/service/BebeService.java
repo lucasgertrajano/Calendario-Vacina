@@ -17,7 +17,7 @@ public class BebeService {
     public void removerBebe(String nome){
         for(Bebe b: this.bebes) {
             if(b.getNome().equals(nome)) {
-                this.bebes.remove(nome);
+                this.bebes.remove(b);
             }
         }
     }
