@@ -20,6 +20,14 @@ public class Bebe{
         this.calendario = new Calendario();
     }
 
+    public void agendarVacina(String nomeVacina, LocalDate data) {
+        vacinasAgendadas.add(new VacinaAgendada(nomeVacina, data));
+    }
+
+    public ArrayList<VacinaAgendada> getVacinasAgendadas() {
+        return vacinasAgendadas;
+    }
+
     @Override
     public String toString(){
         return "Nome: " + this.nome + "\nSexo: " + this.sexo + "\nIdade: " + this.idade + "\n";
