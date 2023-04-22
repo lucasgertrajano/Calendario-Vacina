@@ -26,8 +26,9 @@ public class Main {
                 + "\n 5.Alterar dados do bebê"
                 + "\n 6.Verifcar Vacinas Disponíveis"
                 + "\n 7.Agendar Vacina"
-                + "\n 8.Consultar Vacinas Tomadas"
+                + "\n 8.Listar Vacina Agendadas"
                 + "\n 9.Verificar Vacinas de acordo com os meses"
+                + "\n 10.Consultar Vacinas Tomadas"
                 + "\n 0.Sair");
 
         Scanner leia = new Scanner(System.in);
@@ -97,7 +98,7 @@ public class Main {
                         String dataVacinaStr = leia.nextLine();
                         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
                         LocalDate dataVacina = LocalDate.parse(dataVacinaStr, formatter);
-                        new VacinaAgendada(nomeVacina, dataVacina);
+                        new VacinaAgendada(nomeVacina, dataVacina, nomeAgendar);
                         // System.out.println("Digite a data da vacina no formato DD/MM/AAAA:");
                         //String dataVacina = leia.nextLine();
                         //VacinaAgendada vacinacao = new VacinaAgendada(nomeVacina, dataVacina);

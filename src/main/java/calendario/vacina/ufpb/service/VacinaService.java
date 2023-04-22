@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class VacinaService {
 
-    public String verficarVacinas(){
+    public String   verficarVacinas(){
         return "                                         Meses | Vacinas Recomendadas\n"
                 + "--------------------------------------------------------------------------------------------------------------------"
                 + "\n 0 meses  | BCG, Hepatite B                                                                                        | "

@@ -52,7 +52,7 @@ public class BebeService {
     public boolean agendarVacina(String nome, String vacina, LocalDate data) {
         Bebe bebe = pesquisarPeloNome(nome);
         if (bebe != null) {
-            bebe.agendarVacina(vacina, data);
+            bebe.agendarVacina(vacina, data, nome);
             return true;
         }
         return false;
