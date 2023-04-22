@@ -1,7 +1,6 @@
 package calendario.vacina.ufpb;
 
 import java.time.LocalDate;
-import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -11,6 +10,7 @@ public class Bebe{
     private String sexo;
     private Integer idade;
     private Calendario calendario;
+    private ArrayList<VacinaAgendada> vacinasAgendadas = new ArrayList<>();
 
 
     public Bebe(String nome, String sexo, Integer idade) {
@@ -20,16 +20,14 @@ public class Bebe{
         this.calendario = new Calendario();
     }
 
-  //  public void agendarVacina(String nomeVacina, LocalDate data) {
-      //  vacinasAgendadas.add(new VacinaAgendada(nomeVacina, data));
-    }
     public void agendarVacina(String nomeVacina, LocalDate data) {
-        vacinasAgendadas.add(new VacinaAgendadaService(nomeVacina, data));
+        vacinasAgendadas.add(new VacinaAgendada(nomeVacina, data));
     }
 
     public ArrayList<VacinaAgendada> getVacinasAgendadas() {
         return vacinasAgendadas;
     }
+
 
     @Override
     public String toString(){
@@ -76,7 +74,4 @@ public class Bebe{
     @Override
     public int hashCode() {
         return Objects.hash(nome, idade);
-    }
-
-
-}
+    }}

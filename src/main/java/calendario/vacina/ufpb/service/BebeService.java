@@ -1,9 +1,11 @@
 package calendario.vacina.ufpb.service;
 
 import calendario.vacina.ufpb.Bebe;
-import java.util.ArrayList;
 import calendario.vacina.ufpb.VacinaAgendada;
+
 import java.time.LocalDate;
+import java.util.ArrayList;
+
 public class BebeService {
     private Bebe bebe;
     private ArrayList<Bebe> bebes = new ArrayList<Bebe>();
@@ -47,9 +49,6 @@ public class BebeService {
         }
         return stringBuilder;
     }
-
-
-
     public boolean agendarVacina(String nome, String vacina, LocalDate data) {
         Bebe bebe = pesquisarPeloNome(nome);
         if (bebe != null) {
@@ -59,8 +58,6 @@ public class BebeService {
         return false;
     }
 
-
-    public void agendarVacina(Bebe bebeAgendar, VacinaAgendadaService vacinacao) {
+    public void agendarVacina(Bebe bebeAgendar, VacinaAgendada vacinacao) {
     }
-
 }

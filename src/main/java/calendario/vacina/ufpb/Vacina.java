@@ -23,6 +23,9 @@ public class Vacina {
         vacinas.add("Hepatite A");              //12 meses
     }
 
+    public Vacina(String nomeVacina, String dataVacina) {
+    }
+
     public static ArrayList<String> getVacinas() {
         return vacinas;
     }
