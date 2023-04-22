@@ -1,12 +1,9 @@
-package calendario.vacina.ufpb;
 
-import java.time.LocalDate;
-
-public class VacinaAgendada {
+public class VacinaAgendadaService {
     private String nomeVacina;
     private LocalDate data;
 
-    public VacinaAgendada(String nomeVacina, LocalDate dataVacina) {
+    public VacinaAgendadaService(String nomeVacina, LocalDate dataVacina) {
         this.nomeVacina = nomeVacina;
         this.data = dataVacina;
     }

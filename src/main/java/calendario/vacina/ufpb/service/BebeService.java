@@ -48,6 +48,8 @@ public class BebeService {
         return stringBuilder;
     }
 
+
+
     public boolean agendarVacina(String nome, String vacina, LocalDate data) {
         Bebe bebe = pesquisarPeloNome(nome);
         if (bebe != null) {
@@ -57,7 +59,8 @@ public class BebeService {
         return false;
     }
 
-    public void agendarVacina(Bebe bebeAgendar, VacinaAgendada vacinacao) {
+
+    public void agendarVacina(Bebe bebeAgendar, VacinaAgendadaService vacinacao) {
     }
 
 }

@@ -20,8 +20,11 @@ public class Bebe{
         this.calendario = new Calendario();
     }
 
+  //  public void agendarVacina(String nomeVacina, LocalDate data) {
+      //  vacinasAgendadas.add(new VacinaAgendada(nomeVacina, data));
+    }
     public void agendarVacina(String nomeVacina, LocalDate data) {
-        vacinasAgendadas.add(new VacinaAgendada(nomeVacina, data));
+        vacinasAgendadas.add(new VacinaAgendadaService(nomeVacina, data));
     }
 
     public ArrayList<VacinaAgendada> getVacinasAgendadas() {
