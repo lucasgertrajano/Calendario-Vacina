@@ -27,17 +27,17 @@ public class Main {
                 + "\n 6.Verificar Vacinas de acordo com os meses"
                 + "\n 7.Verifcar Vacinas Disponíveis"
                 + "\n 8.Agendar Vacina"
-                + "\n 9.Listar Vacina Agendadas"
+                + "\n 9.Listar Vacinas Agendadas"
                 + "\n 10.Consultar Vacinas Tomadas"
                 + "\n 0.Sair");
 
         Scanner leia = new Scanner(System.in);
         boolean sair = false;
         while(!sair) {
-            int opcao = Integer.parseInt(leia.nextLine());
+            String opcao = leia.nextLine();
 
             switch(opcao){
-                case 1:
+                case "1":
                     System.out.println("Qual o nome do seu bebê?");
                     String nomeBebe = leia.nextLine();
                     System.out.println("Qual é o sexo do bebê? (F ou M)");
@@ -48,22 +48,22 @@ public class Main {
                     bebeService.cadastrarBebe(bebe);
                     System.out.println("Cadastro concluído com sucesso! \n");
                     break;
-                case 2:
+                case "2":
                     System.out.println("Bebês cadastrados: \n");
-                    System.out.println(bebeService.listarBebes());
+                    System.out.print(bebeService.listarBebes());
                     break;
-                case 3:
+                case "3":
                     System.out.println("Digite o nome do bebê que deseja remover:");
                     String nome = leia.nextLine();
                     bebeService.removerBebe(nome);
                     System.out.println("Removido com sucesso! \n" );
                     break;
-                case 4:
+                case "4":
                     System.out.println("Digite o nome do bebê que deseja pesquisar:");
                     String nomePesquisa = leia.nextLine();
                     System.out.println(bebeService.pesquisarPeloNome(nomePesquisa));
                     break;
-                case 5:
+                case "5":
                     System.out.println("Digite o nome do bebê que deseja alterar:");
                     String nomeAlterar = leia.nextLine();
                     Bebe bebeAlterar = bebeService.pesquisarPeloNome(nomeAlterar);
@@ -81,15 +81,15 @@ public class Main {
                         System.out.println("Bebê não encontrado.");
                     }
                     break;
-                case 6:
+                case "6":
                     System.out.println(vacinaService.verficarVacinas());
                     break;
-                case 7:
+                case "7":
                     System.out.println("Digite quantos meses tem seu bebê:");
                     int idadeVacinaBebe = Integer.parseInt(leia.nextLine());
                     System.out.println(vacinaService.getVacinasPorIdade(idadeVacinaBebe));
                     break;
-                case 8:
+                case "8":
                     System.out.println("Digite o nome do bebê para o qual deseja agendar uma vacina:");
                     String nomeBebeAgendar = leia.nextLine();
                     Bebe bebeAgendar = bebeService.pesquisarPeloNome(nomeBebeAgendar);
@@ -107,21 +107,31 @@ public class Main {
                         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
                         LocalDate dataVacina = LocalDate.parse(dataVacinaStr, formatter);
                         VacinaAgendada vacine = new VacinaAgendada(nomeVacina, dataVacina, nomeBebeAgendar);
-
-
-                        System.out.println(vacine);
-
+                        bebeAgendar.getVacinasAgendadas().add(vacine);
                         System.out.println("Vacina agendada com sucesso para " + nomeBebeAgendar + "!");
                     } else {
                         System.out.println("Bebê não encontrado.");
                     }
                     break;
-                case 9:
-                case 10:
-                case 0:
+                case "9":
+                    System.out.println("Digite o nome do Bebê: ");
+                    String nomeBebeVacinas = leia.nextLine();
+                    Bebe bebeVacinas = bebeService.pesquisarPeloNome(nomeBebeVacinas);
+                    if (bebeVacinas != null){
+                        System.out.println("Vacinas agendadas para " + bebeVacinas.getNome());
+                        System.out.println(bebeVacinas.listaVacinasAgendadas());
+                        break;
+                    }
+                    System.out.println("Bebê não encontrado");
+                    break;
+                case "10":
+                case "0":
                     sair = true;
+                default:
+                    System.out.println("Opção inexistente!");
             }
         }
+        leia.close();
         System.out.println("Fim de programa!");
 
     }

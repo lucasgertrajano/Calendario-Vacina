@@ -60,12 +60,12 @@ public class Bebe{
 
     public StringBuilder listaVacinasAgendadas(){
         StringBuilder stringBuilder = new StringBuilder();
-        for (VacinaAgendada vacinaAgendada: vacinasAgendadas){
-            stringBuilder.append(vacinaAgendada.getNomeVacina() + "\n");
-        }
-        if (stringBuilder.equals("")){
-            stringBuilder.append("não há nenhuma vacina cadastrada para este bebê");
+        if (this.vacinasAgendadas.size() == 0) {
+            stringBuilder.append("Não há nenhuma vacina Agendada para este bebê");
             return stringBuilder;
+        }
+        for (VacinaAgendada vacinaAgendada: vacinasAgendadas){
+            stringBuilder.append(vacinaAgendada.getNomeVacina()).append("\n");
         }
         return stringBuilder;
     }
