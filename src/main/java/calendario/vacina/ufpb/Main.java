@@ -66,15 +66,20 @@ public class Main {
                 case 5:
                     System.out.println("Digite o nome do bebê que deseja alterar:");
                     String nomeAlterar = leia.nextLine();
-                    System.out.println("Digite os novos dados do bebê");
-                    System.out.println("Digite o nome bebê:");
-                    String novoNome = leia.nextLine();
-                    System.out.println("Digite o sexo do bebê: (F ou M)");
-                    String novoSexo = leia.nextLine();
-                    System.out.println("Digite quantos meses o bebê tem:");
-                    int novaIdade = Integer.parseInt(leia.nextLine());
-                    bebeService.alterarBebe(nomeAlterar, new Bebe(novoNome,novoSexo,novaIdade));
-                    System.out.println("Dados alterados com sucesso!");
+                    Bebe bebeAlterar = bebeService.pesquisarPeloNome(nomeAlterar);
+                    if(bebeAlterar != null) {
+                        System.out.println("Digite os novos dados do bebê");
+                        System.out.println("Digite o nome bebê:");
+                        String novoNome = leia.nextLine();
+                        System.out.println("Digite o sexo do bebê: (F ou M)");
+                        String novoSexo = leia.nextLine();
+                        System.out.println("Digite quantos meses o bebê tem:");
+                        int novaIdade = Integer.parseInt(leia.nextLine());
+                        bebeService.alterarBebe(nomeAlterar, new Bebe(novoNome, novoSexo, novaIdade));
+                        System.out.println("Dados alterados com sucesso!");
+                    } else {
+                        System.out.println("Bebê não encontrado.");
+                    }
                     break;
                 case 6:
                     System.out.println(vacinaService.verficarVacinas());
