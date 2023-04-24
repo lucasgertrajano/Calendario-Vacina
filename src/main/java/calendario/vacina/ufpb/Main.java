@@ -14,6 +14,7 @@ public class Main {
 
         BebeService bebeService = new BebeService();
         VacinaService vacinaService = new VacinaService();
+        VacinaAgendada vacinaAgendada = new VacinaAgendada();
 
         System.out.println("Sistema Calendário de Vacina\n");
 
@@ -101,11 +102,11 @@ public class Main {
                         String dataVacinaStr = leia.nextLine();
                         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
                         LocalDate dataVacina = LocalDate.parse(dataVacinaStr, formatter);
-                        new VacinaAgendada(nomeVacina, dataVacina, nomeAgendar);
-                        // System.out.println("Digite a data da vacina no formato DD/MM/AAAA:");
-                        //String dataVacina = leia.nextLine();
-                        //VacinaAgendada vacinacao = new VacinaAgendada(nomeVacina, dataVacina);
-                        //bebeService.agendarVacina(bebeAgendar, vacinacao);
+                        VacinaAgendada vacine = new VacinaAgendada(nomeAgendar, nomeVacina, dataVacina);
+
+
+                        System.out.println(vacine);
+
                         System.out.println("Vacina agendada com sucesso para " + nomeAgendar + "!");
                     } else {
                         System.out.println("Bebê não encontrado.");
