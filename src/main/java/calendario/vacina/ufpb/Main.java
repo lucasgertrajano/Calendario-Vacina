@@ -14,7 +14,6 @@ public class Main {
 
         BebeService bebeService = new BebeService();
         VacinaService vacinaService = new VacinaService();
-        VacinaAgendada vacinaAgendada = new VacinaAgendada();
 
         System.out.println("Sistema Calendário de Vacina\n");
 
@@ -87,10 +86,10 @@ public class Main {
                     break;
                 case 8:
                     System.out.println("Digite o nome do bebê para o qual deseja agendar uma vacina:");
-                    String nomeAgendar = leia.nextLine();
-                    Bebe bebeAgendar = bebeService.pesquisarPeloNome(nomeAgendar);
+                    String nomeBebeAgendar = leia.nextLine();
+                    Bebe bebeAgendar = bebeService.pesquisarPeloNome(nomeBebeAgendar);
                     if (bebeAgendar != null) {
-                        System.out.println("Vacinas recomendadas para " + nomeAgendar + " (" + bebeAgendar.getIdade() + " meses):");
+                        System.out.println("Vacinas recomendadas para " + nomeBebeAgendar + " (" + bebeAgendar.getIdade() + " meses):");
                         System.out.println(vacinaService.getVacinasPorIdade(bebeAgendar.getIdade()));
                         for (VacinaAgendada vacina : bebeAgendar.getVacinasAgendadas()) {
                             System.out.println(vacina);
@@ -102,12 +101,12 @@ public class Main {
                         String dataVacinaStr = leia.nextLine();
                         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
                         LocalDate dataVacina = LocalDate.parse(dataVacinaStr, formatter);
-                        VacinaAgendada vacine = new VacinaAgendada(nomeAgendar, nomeVacina, dataVacina);
+                        VacinaAgendada vacine = new VacinaAgendada(nomeVacina, dataVacina, nomeBebeAgendar);
 
 
                         System.out.println(vacine);
 
-                        System.out.println("Vacina agendada com sucesso para " + nomeAgendar + "!");
+                        System.out.println("Vacina agendada com sucesso para " + nomeBebeAgendar + "!");
                     } else {
                         System.out.println("Bebê não encontrado.");
                     }

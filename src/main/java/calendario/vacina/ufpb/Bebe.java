@@ -9,7 +9,7 @@ public class Bebe{
     private String nome;
     private String sexo;
     private Integer idade;
-    private Calendario calendario;
+
     private ArrayList<VacinaAgendada> vacinasAgendadas = new ArrayList<>();
 
 
@@ -17,7 +17,6 @@ public class Bebe{
         this.nome = nome;
         this.sexo = sexo;
         this.idade = idade;
-        this.calendario = new Calendario();
     }
 
     public Bebe(String nomeVacina, String nomeVacina2) {
@@ -59,8 +58,16 @@ public class Bebe{
         this.idade = idade;
     }
 
-    public Calendario getCalendario() {
-        return calendario;
+    public StringBuilder listaVacinasAgendadas(){
+        StringBuilder stringBuilder = new StringBuilder();
+        for (VacinaAgendada vacinaAgendada: vacinasAgendadas){
+            stringBuilder.append(vacinaAgendada.getNomeVacina() + "\n");
+        }
+        if (stringBuilder.equals("")){
+            stringBuilder.append("não há nenhuma vacina cadastrada para este bebê");
+            return stringBuilder;
+        }
+        return stringBuilder;
     }
 
     @Override
@@ -74,4 +81,5 @@ public class Bebe{
     @Override
     public int hashCode() {
         return Objects.hash(nome, idade);
-    }}
+    }
+}

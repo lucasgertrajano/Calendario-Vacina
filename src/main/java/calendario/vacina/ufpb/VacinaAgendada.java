@@ -5,13 +5,13 @@ import java.time.LocalDate;
 public class VacinaAgendada {
     private String nomeVacina;
     private LocalDate data;
-    private String nomeAgendar;
+    private String nomeBebe;
 
 
-    public VacinaAgendada(String nomeVacina, LocalDate dataVacina, String nomeAgendar) {
+    public VacinaAgendada(String nomeVacina, LocalDate dataVacina, String nomeBebe) {
         this.nomeVacina = nomeVacina;
         this.data = dataVacina;
-        this.nomeAgendar = nomeAgendar;
+        this.nomeBebe = nomeBebe;
     }
 
     public String getNomeVacina() {
@@ -21,12 +21,12 @@ public class VacinaAgendada {
     public void setNomeVacina(String nomeVacina) {
         this.nomeVacina = nomeVacina;
     }
-    public String getNomeAgendar() {
-        return nomeAgendar;
+    public String getNomeBebe() {
+        return nomeBebe;
     }
 
-    public void setNomeAgendar(String nomeAgendar) {
-        this.nomeAgendar = nomeAgendar;
+    public void setNomeBebe(String nomeBebe) {
+        this.nomeBebe = nomeBebe;
     }
 
     public LocalDate getData() {
