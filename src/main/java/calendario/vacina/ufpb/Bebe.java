@@ -9,7 +9,6 @@ public class Bebe{
     private String nome;
     private String sexo;
     private Integer idade;
-    private Calendario calendario;
     private ArrayList<VacinaAgendada> vacinasAgendadas = new ArrayList<>();
 
 
@@ -17,7 +16,6 @@ public class Bebe{
         this.nome = nome;
         this.sexo = sexo;
         this.idade = idade;
-        this.calendario = new Calendario();
     }
 
     public void agendarVacina(String nomeVacina, LocalDate data, String nomeAgendar) {
@@ -57,10 +55,6 @@ public class Bebe{
 
     public void setIdade(Integer idade) {
         this.idade = idade;
-    }
-
-    public Calendario getCalendario() {
-        return calendario;
     }
 
     @Override

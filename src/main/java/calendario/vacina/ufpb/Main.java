@@ -17,17 +17,17 @@ public class Main {
 
         System.out.println("Sistema Calendário de Vacina\n");
 
-        System.out.println("\n"
-                + "Escolha uma opção:"
+        System.out.println(
+                 "Escolha uma opção:"
                 + "\n 1.Cadastrar bebê"
                 + "\n 2.Listar bebês"
                 + "\n 3.Remover bebê"
                 + "\n 4.Pesquisar bebê"
                 + "\n 5.Alterar dados do bebê"
-                + "\n 6.Verifcar Vacinas Disponíveis"
-                + "\n 7.Agendar Vacina"
-                + "\n 8.Listar Vacina Agendadas"
-                + "\n 9.Verificar Vacinas de acordo com os meses"
+                + "\n 6.Verificar Vacinas de acordo com os meses"
+                + "\n 7.Verifcar Vacinas Disponíveis"
+                + "\n 8.Agendar Vacina"
+                + "\n 9.Listar Vacina Agendadas"
                 + "\n 10.Consultar Vacinas Tomadas"
                 + "\n 0.Sair");
 
@@ -38,11 +38,11 @@ public class Main {
 
             switch(opcao){
                 case 1:
-                    System.out.println("Digite o nome do bebê:");
+                    System.out.println("Qual o nome do seu bebê?");
                     String nomeBebe = leia.nextLine();
-                    System.out.println("Digite o sexo do bebê:");
+                    System.out.println("Qual é o sexo do bebê? (F ou M)");
                     String sexoBebe = leia.nextLine();
-                    System.out.println("Quantos meses o bebê tem?");
+                    System.out.println("Quantos meses tem o seu bebê?");
                     int idadeBebe = Integer.parseInt(leia.nextLine());
                     Bebe bebe = new Bebe(nomeBebe, sexoBebe, idadeBebe);
                     bebeService.cadastrarBebe(bebe);
@@ -69,7 +69,7 @@ public class Main {
                     System.out.println("Digite os novos dados do bebê");
                     System.out.println("Digite o nome bebê:");
                     String novoNome = leia.nextLine();
-                    System.out.println("Digite o sexo do bebê:");
+                    System.out.println("Digite o sexo do bebê: (F ou M)");
                     String novoSexo = leia.nextLine();
                     System.out.println("Digite quantos meses o bebê tem:");
                     int novaIdade = Integer.parseInt(leia.nextLine());
@@ -77,17 +77,20 @@ public class Main {
                     System.out.println("Dados alterados com sucesso!");
                     break;
                 case 6:
-                    System.out.println("Digite quatos meses tem seu bebê:");
+                    System.out.println(vacinaService.verficarVacinas());
+                    break;
+                case 7:
+                    System.out.println("Digite quantos meses tem seu bebê:");
                     int idadeVacinaBebe = Integer.parseInt(leia.nextLine());
                     System.out.println(vacinaService.getVacinasPorIdade(idadeVacinaBebe));
                     break;
-                case 7:
+                case 8:
                     System.out.println("Digite o nome do bebê para o qual deseja agendar uma vacina:");
                     String nomeAgendar = leia.nextLine();
                     Bebe bebeAgendar = bebeService.pesquisarPeloNome(nomeAgendar);
                     if (bebeAgendar != null) {
                         System.out.println("Vacinas recomendadas para " + nomeAgendar + " (" + bebeAgendar.getIdade() + " meses):");
-                        System.out.println(vacinaService.verficarVacinas());
+                        System.out.println(vacinaService.getVacinasPorIdade(bebeAgendar.getIdade()));
                         for (VacinaAgendada vacina : bebeAgendar.getVacinasAgendadas()) {
                             System.out.println(vacina);
                         }
@@ -109,8 +112,7 @@ public class Main {
                     }
                     break;
                 case 9:
-                    System.out.println(vacinaService.verficarVacinas());
-                    break;
+                case 10:
                 case 0:
                     sair = true;
             }
