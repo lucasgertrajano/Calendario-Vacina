@@ -52,7 +52,6 @@ public class Main {
                 + "\n 7.Verificar Vacinas Disponíveis"
                 + "\n 8.Agendar Vacina"
                 + "\n 9.Listar Vacinas Agendadas"
-                + "\n 10.Consultar Vacinas Tomadas"
                 + "\n 0.Sair");
 
         Scanner leia = new Scanner(System.in);
@@ -155,8 +154,6 @@ public class Main {
                     }
                     System.out.println("Bebê não encontrado");
                     break;
-
-                case "10":
 
                 case "0":
                     sair = true;
