@@ -3,6 +3,8 @@ package calendario.vacina.ufpb;
 import calendario.vacina.ufpb.service.BebeService;
 import calendario.vacina.ufpb.service.VacinaService;
 
+import javax.swing.JOptionPane;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
@@ -13,7 +15,29 @@ public class Main {
 
 
         BebeService bebeService = new BebeService();
+        try {
+            bebeService.recuperarDados();
+
+        } catch (IOException ioException){
+            JOptionPane.showMessageDialog(null, "Ocorreu um erro ao recuperar seus dados: "+ ioException.getMessage());
+        }
         VacinaService vacinaService = new VacinaService();
+
+        for (int i = 0; i< bebeService.getBebes().size(); i++) {
+            Bebe bebe = bebeService.getBebes().get(i);
+            for (int j = 0; j < bebe.getVacinasAgendadas().size(); j++){
+                LocalDate dataVacina = bebe.getVacinasAgendadas().get(j).getData();;
+                LocalDate hoje = LocalDate.now();
+
+                int diasAteAgendada = hoje.until(dataVacina).getDays();
+
+                if (diasAteAgendada <= 2 && diasAteAgendada >= 1) {
+                    JOptionPane.showMessageDialog(null, "Faltam " + diasAteAgendada
+                            + " dias para a data agendada da vacina contra "
+                            + bebe.getVacinasAgendadas().get(j).getNomeVacina() + " para o bebe " + bebe.getNome());
+                }
+            }
+            }
 
         System.out.println("Sistema Calendário de Vacina\n");
 
@@ -25,7 +49,7 @@ public class Main {
                 + "\n 4.Pesquisar bebê"
                 + "\n 5.Alterar dados do bebê"
                 + "\n 6.Verificar Vacinas de acordo com os meses"
-                + "\n 7.Verifcar Vacinas Disponíveis"
+                + "\n 7.Verificar Vacinas Disponíveis"
                 + "\n 8.Agendar Vacina"
                 + "\n 9.Listar Vacinas Agendadas"
                 + "\n 10.Consultar Vacinas Tomadas"
@@ -48,21 +72,25 @@ public class Main {
                     bebeService.cadastrarBebe(bebe);
                     System.out.println("Cadastro concluído com sucesso! \n");
                     break;
+
                 case "2":
                     System.out.println("Bebês cadastrados: \n");
                     System.out.print(bebeService.listarBebes());
                     break;
+
                 case "3":
                     System.out.println("Digite o nome do bebê que deseja remover:");
                     String nome = leia.nextLine();
                     bebeService.removerBebe(nome);
                     System.out.println("Removido com sucesso! \n" );
                     break;
+
                 case "4":
                     System.out.println("Digite o nome do bebê que deseja pesquisar:");
                     String nomePesquisa = leia.nextLine();
                     System.out.println(bebeService.pesquisarPeloNome(nomePesquisa));
                     break;
+
                 case "5":
                     System.out.println("Digite o nome do bebê que deseja alterar:");
                     String nomeAlterar = leia.nextLine();
@@ -81,14 +109,17 @@ public class Main {
                         System.out.println("Bebê não encontrado.");
                     }
                     break;
+
                 case "6":
                     System.out.println(vacinaService.verficarVacinas());
                     break;
+
                 case "7":
                     System.out.println("Digite quantos meses tem seu bebê:");
                     int idadeVacinaBebe = Integer.parseInt(leia.nextLine());
                     System.out.println(vacinaService.getVacinasPorIdade(idadeVacinaBebe));
                     break;
+
                 case "8":
                     System.out.println("Digite o nome do bebê para o qual deseja agendar uma vacina:");
                     String nomeBebeAgendar = leia.nextLine();
@@ -96,13 +127,12 @@ public class Main {
                     if (bebeAgendar != null) {
                         System.out.println("Vacinas recomendadas para " + nomeBebeAgendar + " (" + bebeAgendar.getIdade() + " meses):");
                         System.out.println(vacinaService.getVacinasPorIdade(bebeAgendar.getIdade()));
-                        for (VacinaAgendada vacina : bebeAgendar.getVacinasAgendadas()) {
-                            System.out.println(vacina);
-                        }
+                        System.out.println("Vacinas agendadas:");
+                        System.out.println(bebeAgendar.listaVacinasAgendadas());
                         System.out.println("Digite o nome da vacina que deseja agendar:");
                         String nomeVacina = leia.nextLine();
 
-                        System.out.println("Digite a data da vacina no formato DD/MM/AAAA:");
+                        System.out.println("Digite a data da vacina no formato dd/MM/yyyy:");
                         String dataVacinaStr = leia.nextLine();
                         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
                         LocalDate dataVacina = LocalDate.parse(dataVacinaStr, formatter);
@@ -113,6 +143,7 @@ public class Main {
                         System.out.println("Bebê não encontrado.");
                     }
                     break;
+
                 case "9":
                     System.out.println("Digite o nome do Bebê: ");
                     String nomeBebeVacinas = leia.nextLine();
@@ -124,15 +155,26 @@ public class Main {
                     }
                     System.out.println("Bebê não encontrado");
                     break;
+
                 case "10":
+
                 case "0":
                     sair = true;
+                    break;
+
                 default:
                     System.out.println("Opção inexistente!");
+                    break;
             }
         }
         leia.close();
         System.out.println("Fim de programa!");
+        try {
+            bebeService.salvarDados();
+
+        } catch (IOException ioException){
+            JOptionPane.showConfirmDialog(null, "Ocorreu um erro ao recuperar seus dados: "+ ioException.getMessage());
+        }
 
     }
 }

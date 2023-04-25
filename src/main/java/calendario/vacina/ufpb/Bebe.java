@@ -2,6 +2,7 @@ package calendario.vacina.ufpb;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class Bebe{
@@ -17,6 +18,13 @@ public class Bebe{
         this.nome = nome;
         this.sexo = sexo;
         this.idade = idade;
+    }
+
+    public Bebe(String nome, String sexo, Integer idade, ArrayList<VacinaAgendada> vacinasAgendadas){
+        this.nome = nome;
+        this.sexo = sexo;
+        this.idade = idade;
+        this.vacinasAgendadas = vacinasAgendadas;
     }
 
     public Bebe(String nomeVacina, String nomeVacina2) {

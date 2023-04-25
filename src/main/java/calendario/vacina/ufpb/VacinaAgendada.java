@@ -29,6 +29,11 @@ public class VacinaAgendada {
         this.nomeBebe = nomeBebe;
     }
 
+    @Override
+    public String toString(){
+        return nomeVacina;
+    }
+
     public LocalDate getData() {
         return data;
     }
